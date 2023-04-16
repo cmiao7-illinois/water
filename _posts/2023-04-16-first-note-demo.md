@@ -19,7 +19,7 @@ def print_hi(name):
 print_hi('Tom')
 ```
 
-![Alternative text](/Users/clmiao/Desktop/my-site/water/logo.png)
+![Alternative text](https://girlswhocode.com/assets/images/craft-prod/images/seo/_1200x630_crop_center-center_82_none/GWC_SEO_Logo.png?mtime=1587761177)
 
 ## Some great heading
 

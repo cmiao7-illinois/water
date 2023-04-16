@@ -1,9 +1,9 @@
-$text-color:            #5a5a5a !default;
-$text-color-light:      #5a5a5a !default;
+$text-color:            #2f2f2f !default;
+$text-color-light:      #666 !default;
 $background-color:      #fff !default;
 $code-background-color: #f8f8f8 !default;
 
-$border-color:          #828282 !default;
+$border-color:          #666 !default;
 $border-color-light:    lighten($border-color, 40%) !default;
 $border-color-dark:     darken($border-color, 25%) !default;
 
