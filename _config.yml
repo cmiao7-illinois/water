@@ -30,14 +30,14 @@ exclude:
 # Jekyll SEO Tag (Optional)
 # =========================
 twitter:
-  username: ngzhio
+  username: clmiao
   card: summary
 logo: logo.jpeg
 social:
-  name: Shangzhi Huang
+  name: Chenglin Miao
   links:
     - https://twitter.com/ngzhio
     - https://www.facebook.com/ngzhio
-    - https://github.com/ngzhio
+    - https://github.com/cmiao7-illinois?tab=repositories
 google_site_verification: u4WXQl0Eu66rsQo2kRdCNx
 lang: en
