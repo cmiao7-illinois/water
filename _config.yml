@@ -27,17 +27,16 @@ exclude:
   - README.md
   - jekyll-theme-hamilton.gemspec
 
-# Jekyll SEO Tag (Optional)
-# =========================
-# twitter:
-#   username: clmiao
-#   card: summary
-# logo: logo.jpeg
-# social:
-#   name: Chenglin Miao
-#   links:
-#     - https://twitter.com/ngzhio
-#     - https://www.facebook.com/ngzhio
-#     - https://github.com/cmiao7-illinois?tab=repositories
+Jekyll SEO Tag (Optional)
+=========================
+twitter:
+  username: clmiao
+  card: summary
+logo: logo.jpeg
+social:
+  name: Chenglin Miao
+  links:
+    - https://www.linkedin.com/in/chenglin-miao-8a30b0272/
+    - https://github.com/cmiao7-illinois
 # google_site_verification: u4WXQl0Eu66rsQo2kRdCNx
-# lang: en
+lang: en
