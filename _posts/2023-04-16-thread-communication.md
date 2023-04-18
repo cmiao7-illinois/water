@@ -1,9 +1,9 @@
 ---
 layout: post
 toc: true
-title: "This post demonstrates post content styles"
-categories: C++
-tags: [markdown, css, html]
+title: "C++ Concurrency(2) Thread Communication"
+categories: C++ Concurrency
+tags: [C++, multithread]
 author:
   - clmiao
 ---
