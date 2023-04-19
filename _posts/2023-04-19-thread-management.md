@@ -10,7 +10,7 @@ author:
 
 1. Create a thread;
 2. RAII for exceptions; 
-3. daemon threads;
+3. Daemon threads;
 4. Reference of Arguments;
 5. Divide and Merge.
 
@@ -24,7 +24,7 @@ We can create a thread through:
 3. normal function: watch out pass the function address, instead an object/entity to a thread
 4. a thread is created like std::thread(func, *args), not std::thread(func(), *args) 
 
-Excemple:
+Example:
 
 ```c++
 //functor for working in one thread
@@ -45,7 +45,7 @@ RAII thread_guard allows program exit normally(clean contents one by one in stac
 
 If an exception occured in do_something_in_current_thread() part of function f(), the resources in thread_guard() will be destroyed still in destruct function ~thread_guard().
 
-Excemple:
+Example:
 
 ```c++
 //RAII allows auto destruct
