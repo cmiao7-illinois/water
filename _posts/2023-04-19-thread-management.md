@@ -8,11 +8,11 @@ author:
   - clmiao
 ---
 
-1. Create a thread
-2. RAII for exceptions
-3. daemon threads
-4. Reference of Arguments
-5. Divide and Merge
+1. Create a thread;
+2. RAII for exceptions; 
+3. daemon threads;
+4. Reference of Arguments;
+5. Divide and Merge.
 
 ## Create a thread
 
