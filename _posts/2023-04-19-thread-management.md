@@ -47,7 +47,7 @@ If an exception occured in do_something_in_current_thread() part of function f()
 
 Excemple:
 
-```C++
+```c++
 //RAII allows auto destruct
 class thread_guard{
 private:
