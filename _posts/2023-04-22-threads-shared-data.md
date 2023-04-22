@@ -241,6 +241,67 @@ class Singleon {
 ```
 The instance pointer is static, different functions and threads operates on this pointer together. ~Deleter is defined to destruct this Singleton, because the class will be destructed automatically after one thread is over. If we not initialize a static deleter in createInstance() function, the instance will be destructed many times.
 
+
+
+As to a threadsafe-Singleton, the std::call_once will execute the passed function(createInstance) once even in many threads. The std::once_falg will record whether the call_once has been executed and change its status. And also, the std::mutex need to be introduced to solve conflicts in class functions.
+
+Example and calling:
+
+```c++
+class threadsafe_Singleton {
+  private:
+    static threadsafe_Singleton *instance;
+    inline static std::once_flag flag;
+    inline static std::mutex mtx;
+    threadsafe_Singleton() {}
+    static void createInstance() {
+        instance = new threadsafe_Singleton();
+        static Deleter del;
+        std::cout << "create an instance" << std::endl;
+    }
+
+  public:
+    static threadsafe_Singleton *getInstance() {
+        std::call_once(threadsafe_Singleton::flag, createInstance);
+        return instance;
+    }
+    class Deleter {
+      public:
+        ~Deleter() {
+            if (threadsafe_Singleton::instance) {
+                delete threadsafe_Singleton::instance;
+                threadsafe_Singleton::instance = nullptr;
+            }
+        }
+    };
+    void func() {
+        std::lock_guard<std::mutex> lck(threadsafe_Singleton::mtx);
+        std::cout << "test passed" << std::endl;
+    }
+};
+
+threadsafe_Singleton *threadsafe_Singleton::instance = nullptr;
+
+int main() {
+    std::thread t1([] {
+        threadsafe_Singleton *ptr1 = threadsafe_Singleton::getInstance();
+        ptr1->getInstance();
+        ptr1->func();
+    });
+    std::thread t2([] {
+        threadsafe_Singleton *ptr2 = threadsafe_Singleton::getInstance();
+        ptr2->getInstance();
+        ptr2->func();
+    });
+
+    t1.join();
+    t2.join();
+    return 0;
+}
+```
+
+
+
 ## Recursive mutex
 
 Std::recursive_mutex allows to be locked twice by one thread. There is one posiblity that we use std::recursive like:
