@@ -1,61 +1,6 @@
 #include <iostream>
 #include <thread>
 #include <string>
-//functor for working in one thread
-struct func{
-    int& i;
-    func(int& _i):i(_i){}
-    void operator()(){
-        for(unsigned int j=0;j<100;j++){
-            do_something(i);
-        }
-    }
-};
-
-//RAII allows auto destruct
-class thread_guard{
-private:
-    std::thread& t;
-public:
-    explicit thread_guard(std::thread& _t):t(_t){}
-    ~thread_guard(){
-        if(t.joinable()){t.join();}
-    }
-    thread_guard(thread_guard const&)=delete;
-    thread_guard& operator=(thread_guard const&)=delete;
-};
-
-void f(){
-    int local_state=0;
-    func my_func(local_state);
-    std::thread t(my_func);
-    thread_guard g(t);
-    do_something_in_current_thread();
-}
-
-void edit_document(std::string const& filename){
-    open_document_and_display(filename);
-    while(!done_editing()){
-        user_command cmd=get_user_input();
-        if(cmd.type==open_new_document){
-            std::string const new_file=get_filename();
-            std::thread t(edit_document,new_file);
-            t.detach();
-        }
-        else{
-            process_user_input(cmd);
-        }
-    }
-}
-
-void update_data_for_widget(widget_id w, widget_data& data);
-void oops_again(widget_id w){
-    widget_data data;
-    std::thread t(update_data_for_widget, w, data);
-    display_status();
-    t.join();
-    process_widget_data(data);
-}
 
 template<typename Iterator, typename T>
 struct accumulate_task{
